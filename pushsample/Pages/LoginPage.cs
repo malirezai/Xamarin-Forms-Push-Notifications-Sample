@@ -69,7 +69,9 @@ namespace pushsample
                 Color = Color.Blue,
             };
             activity.SetBinding(ActivityIndicator.IsRunningProperty, nameof(ViewModel.IsBusy));
-            Func<RelativeLayout, double> activityWidth = (parent) => activity.Measure(mainRelativeLayout.Width, mainRelativeLayout.Height).Request.Width;
+			activity.SetBinding(IsEnabledProperty, nameof(ViewModel.IsBusy));
+
+			Func<RelativeLayout, double> activityWidth = (parent) => activity.Measure(mainRelativeLayout.Width, mainRelativeLayout.Height).Request.Width;
 
 
             /* ADD CONTROLS TO MAIN LAYOUT */
