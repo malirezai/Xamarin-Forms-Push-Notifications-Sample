@@ -182,7 +182,6 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Providers\PushNotificationHandler.cs" />
     <Compile Include="Helpers\ViewControllerHelpers.cs" />
-    <Compile Include="Helpers\Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\temp.jpg" />
