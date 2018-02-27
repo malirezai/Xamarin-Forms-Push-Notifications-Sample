@@ -32,6 +32,7 @@ namespace pushsample.Droid
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 
+            Log.Debug("******* TEST LOG ******* ", "****TEST LOG****");
 			//  handle intents //
 			if (Intent.Extras != null)
 			{
@@ -86,5 +87,20 @@ namespace pushsample.Droid
 				return true;
 			}
 		}
+
+        protected override void OnResume()
+        {
+            if (Intent.Extras != null)
+            {
+                foreach (var key in Intent.Extras.KeySet())
+                {
+                    var value = Intent.Extras.GetString(key);
+                    Log.Debug("FIREBASE SERVICE", "Key: {0} Value: {1}", key, value);
+                }
+
+            }
+
+            base.OnResume();
+        }
 	}
 }

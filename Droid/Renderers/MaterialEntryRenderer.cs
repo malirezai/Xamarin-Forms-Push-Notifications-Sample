@@ -15,14 +15,15 @@ using Application = Android.App.Application;
 using TextChangedEventArgs = Android.Text.TextChangedEventArgs;
 [assembly: ExportRenderer(typeof(MaterialEntry), typeof(MaterialEntryRenderer))]
 
+
 namespace pushsample.Droid.Renderers
 {
-	public class MaterialEntryRenderer : Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer<MaterialEntry, TextInputLayout>
+    public class MaterialEntryRenderer : Xamarin.Forms.Platform.Android.AppCompat.ViewRenderer<MaterialEntry,TextInputLayout>
 	{
 		private EditText _defaultEditTextForValues;
 		private bool _preventTextLoop;
 
-		protected override void OnElementChanged(ElementChangedEventArgs<MaterialEntry> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<MaterialEntry> e)
 		{
 			base.OnElementChanged(e);
 

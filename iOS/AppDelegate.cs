@@ -5,10 +5,7 @@ using System.Linq;
 using Foundation;
 using pushsample.iOS.Helpers;
 using UIKit;
-using Microsoft.WindowsAzure.MobileServices;
 using Newtonsoft.Json;
-using pushsample.Helpers;
-using Microsoft.Azure.Mobile.Distribute;
 
 namespace pushsample.iOS
 {
@@ -23,10 +20,6 @@ namespace pushsample.iOS
 			App.ScreenWidth = (double)UIScreen.MainScreen.Bounds.Width;
 			App.ScreenHeight = (double)UIScreen.MainScreen.Bounds.Height;
 
-			Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
-
-            Distribute.DontCheckForUpdatesInDebug();
-
 			LoadApplication(new App());
 
 			return base.FinishedLaunching(app, options);
@@ -35,6 +28,7 @@ namespace pushsample.iOS
 
 		public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
 		{
+            Push.Instance.DeviceToken = deviceToken.Description.Trim('<', '>').Replace(" ", "");
 			pushsample.Helpers.Settings.DeviceToken = deviceToken.Description.Trim('<', '>').Replace(" ", "");
 		}
 
@@ -45,26 +39,53 @@ namespace pushsample.iOS
 
 		public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
 		{
-			NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
+			//NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
 
 			// The aps is a dictionary with the template values in it
 			// You can adjust this section to do whatever you need to with the push notification
 
-			string alert = string.Empty;
-			if (aps.ContainsKey(new NSString("alert")))
-				alert = (aps[new NSString("alert")] as NSString).ToString();
+			//string alert = string.Empty;
+			//if (aps.ContainsKey(new NSString("alert")))
+			//	alert = (aps[new NSString("alert")] as NSString).ToString();
 
-			string badge = string.Empty;
-			if (aps.ContainsKey(new NSString("badge")))
-				badge = (aps[new NSString("badge")] as NSNumber).ToString();
+			//string badge = string.Empty;
+			//if (aps.ContainsKey(new NSString("badge")))
+			//	badge = (aps[new NSString("badge")] as NSNumber).ToString();
 
-			string payload = string.Empty;
-			if (aps.ContainsKey(new NSString("payload")))
-				payload = (aps[new NSString("payload")] as NSString).ToString();
+			//string payload = string.Empty;
+			//if (aps.ContainsKey(new NSString("payload")))
+			//	payload = (aps[new NSString("payload")] as NSString).ToString();
 
-			var payloadData = JsonConvert.DeserializeObject<NotificationPayload>(payload);
+			//var payloadData = JsonConvert.DeserializeObject<NotificationPayload>(payload);
 
-			DisplayAlert("Success", alert + " " + badge);
+            if (!userInfo.TryGetValue(new NSString("aps"), out NSObject aps))
+                return;
+
+            var apsHash = aps as NSDictionary;
+            var alertHash = apsHash.ObjectForKey(new NSString("alert")) as NSDictionary;
+
+            var badgeValue = alertHash.ObjectForKey(new NSString("badge"));
+            if (badgeValue != null)
+            {
+                if (int.TryParse(new NSString(badgeValue.ToString()), out int count))
+                {
+                    UIApplication.SharedApplication.ApplicationIconBadgeNumber = count;
+                }
+            }
+
+            var notification = new NotificationEventArgs();
+
+            if (alertHash.TryGetValue(new NSString("payload"), out NSObject payloadValue))
+                notification.Payload = JsonConvert.DeserializeObject<Dictionary<string, string>>(payloadValue.ToString());
+
+            if (alertHash.TryGetValue(new NSString("title"), out NSObject titleValue))
+                notification.Title = titleValue.ToString();
+
+            if (alertHash.TryGetValue(new NSString("body"), out NSObject messageValue))
+                notification.Message = messageValue.ToString();
+
+            ((PushNotificationHandler)Push.Instance).NotifyReceived(notification);
+
 		}
 
 		void DisplayAlert(string title, string message, Action completionHandler = null)

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssertTargetFallback>portable-win+net45+wp80+win81+wpa81</AssertTargetFallback>
+    <AssemblyName>pushsample.Shared</AssemblyName>
+    <RootNamespace>pushsample.Shared</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Controls\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Model\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Services\" />
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.EventHubs" Version="1.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.1.1" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Xamarin.Forms" Version="2.3.4.247" />
+  </ItemGroup>
+</Project>

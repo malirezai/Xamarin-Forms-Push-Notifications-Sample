@@ -1,0 +1,34 @@
+﻿<Properties StartupConfiguration="{031638C9-F658-4D2C-9604-7558FBD5EB98}|Default">
+  <MonoDevelop.Ide.ItemProperties.pushsample.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Nexus_5X_API_23" />
+  <MonoDevelop.Ide.ItemProperties.pushsample.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.72076391-F1B7-40D6-AD51-4A842265E403" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/Providers/PushNotifications.cs">
+    <Files>
+      <File FileName="pushsample/Helpers/Extensions.cs" Line="10" Column="22" />
+      <File FileName="pushsample/Controls/MaterialEntry.cs" Line="1" Column="1" />
+      <File FileName="pushsample/ViewModel/PushPageViewModel.cs" Line="95" Column="5" />
+      <File FileName="Droid/MainActivity.cs" Line="70" Column="4" />
+      <File FileName="pushsample/Services/AzureService.cs" Line="83" Column="1" />
+      <File FileName="pushsample/App.cs" Line="50" Column="45" />
+      <File FileName="iOS/AppDelegate.cs" Line="40" Column="9" />
+      <File FileName="iOS/Providers/PushNotificationHandler_iOS.cs" Line="1" Column="1" />
+      <File FileName="iOS/Main.cs" Line="1" Column="1" />
+      <File FileName="pushsample/Pages/LoginPage.cs" Line="36" Column="71" />
+      <File FileName="pushsample/Keys.cs" Line="7" Column="2" />
+      <File FileName="pushsample/Pages/PushNotificationPage.cs" Line="15" Column="47" />
+      <File FileName="pushsample/ViewModel/LoginPageViewModel.cs" Line="54" Column="1" />
+      <File FileName="iOS/Helpers/ViewControllerHelpers.cs" Line="25" Column="3" />
+      <File FileName="Droid/Providers/PushNotifications.cs" Line="105" Column="13" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/mahdi/Documents/Projects/functiuonsNHPush/pushsample/ViewModel/BaseViewModel.cs" relfile="pushsample/ViewModel/BaseViewModel.cs" line="14" column="1" />
+      <Breakpoint file="/Users/mahdi/Documents/Projects/functiuonsNHPush/iOS/Providers/LoginHandler_iOS.cs" relfile="iOS/Providers/LoginHandler_iOS.cs" line="108" column="1" />
+      <Breakpoint file="/Users/mahdi/Documents/Projects/functiuonsNHPush/pushsample/Pages/PushNotificationPage.cs" relfile="pushsample/Pages/PushNotificationPage.cs" line="124" column="1" />
+      <Breakpoint file="/Users/mahdi/Documents/Projects/functiuonsNHPush/pushsample/Pages/PushNotificationPage.cs" relfile="pushsample/Pages/PushNotificationPage.cs" line="126" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
